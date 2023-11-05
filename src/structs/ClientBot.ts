@@ -2,6 +2,7 @@ import { Client, Collection, GatewayIntentBits } from "discord.js";
 import Command from "./handlers/Command";
 import { EventHandler } from "./handlers/EventHandler";
 import ItemDefinitionManager from "./managers/ItemDefinitionManager";
+import UserManager from "./managers/UserManager";
 
 export default class ClientBot extends Client {
 
@@ -9,6 +10,7 @@ export default class ClientBot extends Client {
     static owner: string;
     commands: Collection<string, Command>;
     defs: ItemDefinitionManager;
+    manager: UserManager;
     constructor() {
         super({
             intents: [...Object.values(GatewayIntentBits) as any]
@@ -18,8 +20,7 @@ export default class ClientBot extends Client {
         this.commands = new Collection();
         this.defs = new ItemDefinitionManager();
         this.defs.initialize();
-        // TODO: initialize UserManager
-        // TODO: initialize ProfileManager
+        this.manager = new UserManager();
         // TODO: initialize CaseManager
     }
 
