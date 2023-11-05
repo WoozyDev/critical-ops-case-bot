@@ -16,6 +16,7 @@ export default class ClientBot extends Client {
         this.commands = new Collection();
         // TODO: initialize ItemDefintionManager
         // TODO: initialize UserManager
+        // TODO: initialize ProfileManager
         // TODO: initialize CaseManager
     }
 

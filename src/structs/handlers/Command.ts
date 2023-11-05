@@ -6,12 +6,10 @@ export default class Command {
     name: string;
     description: string;
     args: APIApplicationCommandOption[];
-    ownerOnly: boolean;
-    constructor(name: string, description: string, args: APIApplicationCommandOption[] = [], ownerOnly: boolean = false) {
+    constructor(name: string, description: string, args: APIApplicationCommandOption[] = []) {
         this.name = name;
         this.description = description;
         this.args = args;
-        this.ownerOnly = ownerOnly;
     }
 
     async run(client: ClientBot, interaction: CommandInteraction<CacheType>, options: Omit<CommandInteractionOptionResolver, 'getMessage'>) {}
