@@ -1,14 +1,19 @@
-import { Client, GatewayIntentBits } from "discord.js";
+import { Client, Collection, GatewayIntentBits } from "discord.js";
+import Command from "./handlers/Command";
+import { EventHandler } from "./handlers/EventHandler";
 
 export default class ClientBot extends Client {
 
     static bot: ClientBot;
+    static owner: string;
+    commands: Collection<string, Command>;
     constructor() {
         super({
             intents: [...Object.values(GatewayIntentBits) as any]
         });
         ClientBot.bot = this;
-        // TODO: initialize commands collection
+        ClientBot.owner = '723553355753848832';
+        this.commands = new Collection();
         // TODO: initialize ItemDefintionManager
         // TODO: initialize UserManager
         // TODO: initialize CaseManager
@@ -16,7 +21,7 @@ export default class ClientBot extends Client {
 
     start(token: string) {
         this.login(token);
-        // TODO: EventHandler
+        EventHandler.run(this);
     }
 
 }
