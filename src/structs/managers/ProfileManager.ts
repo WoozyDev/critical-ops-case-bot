@@ -23,7 +23,7 @@ export default class ProfileManager {
     
     static createProfile(ign: string): Profile {
         return {
-            current: false,
+            current: true,
             ign,
             currency: {
                 blue_creds: 0,
